@@ -22,7 +22,7 @@ app.use((error,req,res,next)=>{
         return next(error)
     }
 
-    res.status(error.statusCode || 500).json(error.message || "somthing went wrong please try again")
+    res.status(error.statusCode || 500).json({message: error.message || "somthing went wrong please try again"})
 })
 
 const port = 5000

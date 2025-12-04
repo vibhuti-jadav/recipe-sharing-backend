@@ -38,7 +38,7 @@ const login = async(req,res,next)=>{
         const user = await User.findByCredentials(email,password);
 
         if(!user){
-            next(new httpError("unable to login ",400))
+          return  next(new httpError("unable to login ",400))
         }
 
         res.status(200).json({message:"user logged in ",user,token})
