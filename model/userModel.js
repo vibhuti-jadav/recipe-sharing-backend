@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
 
 const userSchema =new mongoose.Schema({
     name:{
@@ -22,26 +23,39 @@ const userSchema =new mongoose.Schema({
         enum:["admin","user"],
         default:"user",
     },
+    tokens:[
+      {
+        token:{
+          type:String,
+          trim:true
+        }
+      }
+    ]
 
 })
 
-//bycript
-userSchema.pre("save", async function (next) {
-  try {
-    const user = this;
 
-    if (user.isModified("password")) {
-      user.password = await bcrypt.hash(user.password, 8);
+userSchema.pre("save", async function (next) {
+   try {
+            const user = this;
+            if(user.isModified("password")){
+                user.password = await bcrypt.hash(user.password,8)
+            }
+            console.log("hashed passwod")
+
+
+    } catch (error) {
+        throw new Error(error.message
+
+        )
     }
-    next();
-  } catch (error) {
-    next(error);
-  }
 });
 
 
+//login
 userSchema.statics.findByCredentials = async function (email, password) {
-    const user = await this.findOne({ email });
+  try {
+      const user = await this.findOne({ email });
     if (!user) {
         throw new Error("no login credentials");
     }
@@ -52,6 +66,32 @@ userSchema.statics.findByCredentials = async function (email, password) {
     }
 
     return user;
+    
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+
+//jwt
+userSchema.methods.generateAuthToken = async function () {
+  try {
+    const user = this;
+
+    const token = jwt.sign(
+      { _id: user._id.toString() },
+      process.env.JWT_SECRET
+      //{expiresIn : "1m"}
+    );
+
+    user.tokens = user.tokens.concat({ token });
+
+    await user.save();
+
+    return token;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };
 
 
