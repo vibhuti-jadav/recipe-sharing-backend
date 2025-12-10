@@ -36,25 +36,59 @@ const addUser = async(req,res,next)=>{
     }
 }
 
-const login = async(req,res,next)=>{
-    try {
-        
-        const {email , password} = req.body;
 
-        const user = await User.findByCredentials(email,password);
+const login = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
 
-        if(!user){
-            next(new httpError("unable to login ",400))
-        }
+    const user = await User.findByCredentials(email, password);
 
-        const token = await user.generateAuthToken()
-
-        res.status(200).json({message:"user logged in ",user , token})
-
-    } catch (error) {
-        return next(new httpError(error.message,500))
+    if (!user) {
+      return next(new httpError("Invalid login credentials", 400));
     }
-}
+
+    const token = await user.generateAuthToken();
+
+    // Store token in cookies
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: false, // true for production HTTPS
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
+    });
+
+    // Redirect to recipe list
+    return res.redirect("/recipes");
+
+  } catch (error) {
+    return next(new httpError(error.message, 500));
+  }
+};
+
+
+const register = async (req, res, next) => {
+  try {
+    const { name, email, password } = req.body;
+
+    const user = new User({ name, email, password });
+    await user.save();
+
+    const token = await user.generateAuthToken();
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: false,
+      maxAge: 24 * 60 * 60 * 1000
+    });
+
+    res.redirect("/recipes");
+
+  } catch (error) {
+    next(new httpError(error.message, 500));
+  }
+};
+
+
+
 const update = async (req, res, next) => {
   try {
     // FIXED: Request.body → req.body
@@ -136,17 +170,17 @@ const authLogin = async (req, res, next) => {
 
 const logOut = async (req, res, next) => {
   try {
-    const user = req.user;
+    // Optional: remove token from user.tokens if using token DB storage
+    if (req.user && req.token) {
+      req.user.tokens = req.user.tokens.filter((t) => t.token !== req.token);
+      await req.user.save();
+    }
 
-    const token = req.token;
+    // Clear cookie
+    res.clearCookie("token");
 
-    user.tokens = user.tokens.filter((t) => {
-      return t.token !== token;
-    });
-
-    await user.save();
-
-    res.status(200).json({ mesage: "user log-out successfullyy" });
+    // Redirect to login page
+    res.redirect("/login");
   } catch (error) {
     next(new httpError(error.message, 500));
   }
@@ -154,4 +188,4 @@ const logOut = async (req, res, next) => {
 
 
 
-export default {addUser , login , update , deleteUser , authLogin , logOut}
+export default {addUser , login , update , deleteUser , authLogin , logOut ,register }

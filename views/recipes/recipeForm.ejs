@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>recipeForm</title>
+</head>
+<body>
+    <%- include("../layout", { title: "Add Recipe", body: `
+<h2>Add Recipe</h2>
+
+<form action="/recipes/add" method="POST">
+    
+    <label>Title</label>
+    <input type="text" name="title" required>
+
+    <label>Description</label>
+    <textarea name="description" required></textarea>
+
+    <label>Ingredients (comma separated)</label>
+    <input type="text" name="ingredients" required>
+
+    <button type="submit">Submit</button>
+</form>
+
+` }) %>
+
+    
+</body>
+</html>

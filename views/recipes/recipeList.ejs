@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>recipeList</title>
+</head>
+<body>
+    <%- include("../layout", { title: "All Recipes", body: `
+<h2>All Recipes</h2>
+
+<div class="recipe-list">
+    ${recipes.map(recipe => `
+    <%- include("recipeItem", { recipe: recipe }) %>
+    `).join("")}
+</div>
+
+` }) %>
+
+    
+</body>
+</html>
