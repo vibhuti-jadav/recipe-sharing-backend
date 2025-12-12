@@ -120,32 +120,35 @@ http://localhost:5000
 
 ------------------------------------------------------------------------------------------------
 
-🗄️ API Endpoints
-🔐 Auth Routes
-Register User
-POST /api/users/register
-
-Login User
-POST /api/users/login
-
+📌 API Endpoints
 👤 User Routes
-Method	Endpoint	Description
-GET	/api/users/me	Get own profile
-PUT	/api/users/me	Update own profile
-DELETE	/api/users/me	Delete own account
 
-🍳 Recipe Routes
-User Recipe Actions
-Method	Endpoint	Description
-POST	/api/recipes	Create recipe
-GET	/api/recipes/my-recipes	Get own recipes
-GET	/api/recipes/:id	Get single recipe
-PUT	/api/recipes/:id	Update recipe
-DELETE	/api/recipes/:id	Delete recipe
+| Method | Endpoint        | Description        |
+| ------ | --------------- | ------------------ |
+| GET    | `/api/users/me` | Get own profile    |
+| PUT    | `/api/users/me` | Update own profile |
+| DELETE | `/api/users/me` | Delete own account |
 
-🛡️ Admin Recipe Actions
-Method	Endpoint	Description
-GET	/api/recipes	Admin get all recipes
+------------------------------------------------------------------------------------------------
+
+🍳 User Recipe Routes
+
+| Method | Endpoint                  | Description       |
+| ------ | ------------------------- | ----------------- |
+| POST   | `/api/recipes`            | Create recipe     |
+| GET    | `/api/recipes/my-recipes` | Get own recipes   |
+| GET    | `/api/recipes/:id`        | Get single recipe |
+| PUT    | `/api/recipes/:id`        | Update recipe     |
+| DELETE | `/api/recipes/:id`        | Delete recipe     |
+
+------------------------------------------------------------------------------------------------
+
+🛡️ Admin Recipe Routes
+
+| Method | Endpoint       | Description           |
+| ------ | -------------- | --------------------- |
+| GET    | `/api/recipes` | Admin get all recipes |
+
 
 ------------------------------------------------------------------------------------------------
 
@@ -167,14 +170,16 @@ router.get("/all", roleMiddleware("admin"), getAllRecipes);
 ------------------------------------------------------------------------------------------------
 
 🛠️ Technologies Used
-Technology	Purpose
-Node.js	Backend runtime
-Express.js	Web framework
-MongoDB	Database
-Mongoose	ODM
-JWT	Authentication
-Bcrypt	Password hashing
-Dotenv	Env variables
+
+| Technology | Purpose            |
+| ---------- | ------------------ |
+| Node.js    | Backend runtime    |
+| Express.js | Web framework      |
+| MongoDB    | Database           |
+| Mongoose   | ODM                |
+| JWT        | Authentication     |
+| Bcrypt     | Password hashing   |
+| Dotenv     | Environment config |
 
 ------------------------------------------------------------------------------------------------
 🧪 Example Request Body
@@ -217,4 +222,5 @@ Feel free to open issues or submit pull requests to improve the project.
 
 📜 License
 This project is licensed under the MIT License.
+
 
