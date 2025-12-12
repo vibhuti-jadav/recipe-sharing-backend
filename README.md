@@ -93,6 +93,7 @@ backend-recipe-sharing/
 │
 └── README.md
 
+
 ------------------------------------------------------------------------------------------------
 
 ⚙️ Installation & Setup
@@ -103,14 +104,7 @@ backend-recipe-sharing/
 2. Install dependencies
    npm install
 
-3. Configure environment variables
-Create a .env file:
-
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/recipeDB
-JWT_SECRET=your_secret_key
-
-4. Run server
+3. Run server
 npm start
 
 
@@ -182,20 +176,25 @@ router.get("/all", roleMiddleware("admin"), getAllRecipes);
 | Dotenv     | Environment config |
 
 ------------------------------------------------------------------------------------------------
-🧪 Example Request Body
-User Registration
+📤 Example Request Bodies
+
+👤 User Registration Example
+
 {
   "name": "John Doe",
   "email": "john@gmail.com",
   "password": "123456"
 }
 
-Create Recipe
+
+🍳 Create Recipe Example
+
 {
   "title": "Pasta",
   "ingredients": "Tomato, Salt, Pasta",
   "instructions": "Boil pasta and mix ingredients"
 }
+
 
 ------------------------------------------------------------------------------------------------
 
@@ -222,5 +221,6 @@ Feel free to open issues or submit pull requests to improve the project.
 
 📜 License
 This project is licensed under the MIT License.
+
 
 
