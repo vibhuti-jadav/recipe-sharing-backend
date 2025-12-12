@@ -1,5 +1,5 @@
 ﻿# recipe-sharing-backend
-------------------------------------------------------------------
+
 🍽️ Recipe Sharing Backend (Node.js + Express + MongoDB)
 
 A fully functional backend API for a Recipe Sharing Application built using:
@@ -217,3 +217,4 @@ Feel free to open issues or submit pull requests to improve the project.
 
 📜 License
 This project is licensed under the MIT License.
+
