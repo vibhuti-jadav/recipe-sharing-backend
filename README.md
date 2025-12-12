@@ -2,6 +2,13 @@
 
 🍽️ Recipe Sharing Backend (Node.js + Express + MongoDB)
 
+<img width="1919" height="1032" alt="Screenshot 2025-12-12 145210" src="https://github.com/user-attachments/assets/d66e0532-6635-41c4-9842-0121833bb998" />
+<img width="1919" height="1028" alt="Screenshot 2025-12-12 145358" src="https://github.com/user-attachments/assets/8b42cae1-93a5-43b3-8d45-00d98a998502" />
+<img width="1919" height="1032" alt="Screenshot 2025-12-12 145344" src="https://github.com/user-attachments/assets/4ba05672-54dd-4865-b599-1fe480cb673f" />
+<img width="1919" height="1031" alt="Screenshot 2025-12-12 145304" src="https://github.com/user-attachments/assets/31e1ba4d-8cd4-4ef7-8e30-1bf10a656295" />
+<img width="1919" height="1029" alt="Screenshot 2025-12-12 145250" src="https://github.com/user-attachments/assets/204e9bf1-2745-435c-9856-671758139b2d" />
+
+
 A fully functional backend API for a Recipe Sharing Application built using:
 
 Node.js
@@ -9,11 +16,6 @@ Node.js
 Express.js
 
 MongoDB + Mongoose
-<img width="1919" height="1032" alt="Screenshot 2025-12-12 145210" src="https://github.com/user-attachments/assets/d66e0532-6635-41c4-9842-0121833bb998" />
-<img width="1919" height="1028" alt="Screenshot 2025-12-12 145358" src="https://github.com/user-attachments/assets/8b42cae1-93a5-43b3-8d45-00d98a998502" />
-<img width="1919" height="1032" alt="Screenshot 2025-12-12 145344" src="https://github.com/user-attachments/assets/4ba05672-54dd-4865-b599-1fe480cb673f" />
-<img width="1919" height="1031" alt="Screenshot 2025-12-12 145304" src="https://github.com/user-attachments/assets/31e1ba4d-8cd4-4ef7-8e30-1bf10a656295" />
-<img width="1919" height="1029" alt="Screenshot 2025-12-12 145250" src="https://github.com/user-attachments/assets/204e9bf1-2745-435c-9856-671758139b2d" />
 
 JWT Authentication
 
@@ -226,6 +228,7 @@ Feel free to open issues or submit pull requests to improve the project.
 
 📜 License
 This project is licensed under the MIT License.
+
 
 
 
