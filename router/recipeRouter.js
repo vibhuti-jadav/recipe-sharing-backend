@@ -1,6 +1,6 @@
 import express from "express"
 import auth from "../middleware/auth.js";
-import recipeController from "../controller/recipeController.js";
+import recipeController from "../controllers/recipeController.js";
 
 const router = express.Router();
 
@@ -15,4 +15,3 @@ router.patch("/update/:id", recipeController.updateRecipe);
 router.delete("/delete/:id", recipeController.deleteRecipe);
 
 export default router
-
